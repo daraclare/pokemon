@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
 
 const UsersPage = () => {
@@ -27,7 +27,7 @@ const UsersPage = () => {
 };
 
 UsersPage.propTypes = {
-  users: PropTypes.object.isRequired,
+  // users: PropTypes.object.isRequired,
 };
 
 export default UsersPage;
