@@ -8,16 +8,20 @@ const UsersPage = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users);
 
+  const { user, error } = users;
+
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
 
-  console.log("myuser", users);
-
   return (
     <div>
-      <p>{users?.user?.email ? users.user.email : "Loading …"}</p>
-      <p>User page</p>
+      <p>User Details:</p>
+      {error ? (
+        <p>Error Message: {error}</p>
+      ) : (
+        <p>{user?.email ? user.email : "Loading …"}</p>
+      )}
     </div>
   );
 };

@@ -1,3 +1,4 @@
 export const CREATE_COURSE = "CREATE_COURSE";
 export const GET_USER = "GET_USER";
-export const SET_USER = "SET_USER";
+export const SET_USER_SUCCESS = "SET_USER_SUCCESS";
+export const SET_USER_FAILURE = "SET_USER_FAILURE";
