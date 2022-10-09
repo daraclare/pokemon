@@ -5,11 +5,12 @@ import {
 } from "../../actions/pokemonActions";
 import { requestGetPokemon } from "../requests/pokemon";
 
-export function* handleGetPokemon() {
+export function* handleGetPokemon({ id }) {
+  console.log("handlegetpokemon", id);
   try {
-    const response = yield call(requestGetPokemon);
+    const response = yield call(requestGetPokemon, id);
     const { data } = response;
-    yield put(setPokemonSuccess(data.results));
+    yield put(setPokemonSuccess(data));
   } catch (error) {
     yield put(setPokemonFailure(error.message));
   }

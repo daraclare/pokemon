@@ -4,9 +4,11 @@ import {
   SET_POKEMON_FAILURE,
 } from "./actionTypes";
 
-export const getPokemon = () => {
+export const getPokemon = (id) => {
+  console.log("getPokemon id", id);
   return {
     type: GET_POKEMON,
+    id,
   };
 };
 
