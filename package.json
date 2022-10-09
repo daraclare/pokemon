@@ -1,6 +1,6 @@
 {
-  "name": "ps-redux",
-  "description": "React and Redux Pluralsight course by Cory House",
+  "name": "pokemon",
+  "description": "Pokemon App with React, Redux and Sagas",
   "scripts": {
     "start": "webpack server --config webpack.config.dev.js --port 3000"
   },
