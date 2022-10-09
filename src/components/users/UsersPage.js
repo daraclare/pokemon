@@ -1,39 +1,29 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import * as courseActions from "../../redux/actions/courseActions";
 import PropTypes from "prop-types";
 import { getUser } from "../../redux/actions/userActions";
 
 const UsersPage = () => {
   const dispatch = useDispatch();
+  const users = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
 
+  console.log("myuser", users);
+
   return (
     <div>
+      <p>{users?.user?.email ? users.user.email : "Loading …"}</p>
       <p>User page</p>
     </div>
   );
 };
 
 UsersPage.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
-  // courses: PropTypes.array.isRequired,
-  // createCourse: PropTypes.func.isRequired,
-  // courseActions: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
 };
-
-// const mapStateToProps = (state) => {
-//   return {
-//     courses: state.courses,
-//   };
-// };
-
-// const mapDispatchToProps = {
-//   createCourse: courseActions.createCourse,
-// };
 
 export default UsersPage;
