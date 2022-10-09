@@ -6,32 +6,32 @@ import { getPokemon } from "../../redux/actions/pokemonActions";
 
 const PokemonPage = () => {
   const dispatch = useDispatch();
-  const appState = useSelector((state) => state);
+  const pokemons = useSelector((state) => state.pokemon);
 
-  // const { user, error } = users;
-
-  const { pokemon } = appState;
-
-  console.log("pokemon", pokemon);
+  const { pokemon, error } = pokemons;
 
   useEffect(() => {
     dispatch(getPokemon());
   }, [dispatch]);
 
+  console.log("pokemon", pokemon);
+
   return (
     <div>
       <p>Pokemon Details:</p>
-      {/* {error ? (
+      {error ? (
         <p>Error Message: {error}</p>
+      ) : pokemon ? (
+        pokemon.map((poke) => {
+          return <p key={poke.name}>{poke.name}</p>;
+        })
       ) : (
-        <p>{user?.email ? user.email : "Loading …"}</p>
-      )} */}
+        <p>loading…</p>
+      )}
     </div>
   );
 };
 
-PokemonPage.propTypes = {
-  // users: PropTypes.object.isRequired,
-};
+PokemonPage.propTypes = {};
 
 export default PokemonPage;

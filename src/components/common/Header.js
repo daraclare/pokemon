@@ -16,6 +16,10 @@ const Header = () => {
       <NavLink to="/users" activeStyle={activeStyle} exact>
         Users
       </NavLink>
+      {" | "}
+      <NavLink to="/pokemon" activeStyle={activeStyle} exact>
+        Pokemon
+      </NavLink>
     </nav>
   );
 };
