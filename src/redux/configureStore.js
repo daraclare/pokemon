@@ -1,17 +1,21 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./reducers";
-import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
 import createSagaMiddleware from "redux-saga";
 import { watcherSaga } from "./sagas/rootSaga";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middleware = [sagaMiddleware];
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
+
+const middleware =
+  process.env.NODE_ENV !== "production"
+    ? [require("redux-immutable-state-invariant").default(), sagaMiddleware]
+    : [sagaMiddleware];
 
 const configureStore = createStore(
   rootReducer,
   {},
-  applyMiddleware(...middleware)
+  composeEnhancers(applyMiddleware(...middleware))
 );
 
 sagaMiddleware.run(watcherSaga);
