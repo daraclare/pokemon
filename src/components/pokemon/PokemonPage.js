@@ -14,8 +14,6 @@ const PokemonPage = () => {
     dispatch(getPokemon());
   }, [dispatch]);
 
-  console.log("pokemon", pokemon);
-
   return (
     <div>
       <p>Pokemon Details:</p>

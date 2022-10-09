@@ -8,7 +8,6 @@ import { requestGetPokemon } from "../requests/pokemon";
 export function* handleGetPokemon() {
   try {
     const response = yield call(requestGetPokemon);
-    console.log("handler", response);
     const { data } = response;
     yield put(setPokemonSuccess(data.results));
   } catch (error) {
