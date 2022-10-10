@@ -16,14 +16,28 @@ const Wrapper = styled.article`
 const StyledP = styled.p`
   text-transform: uppercase;
   text-align: center;
+  margin: 4px;
 `;
 
-const PokemonCardDetails = ({ pokemon }) => {
+const PokemonCardDetails = ({ pokemon, backImage }) => {
   const type = pokemon.types[0].type.name || "normal";
+
   return (
     <Wrapper type={type}>
+      <div>
+        <img
+          src={pokemon.sprites.front_default}
+          alt={`front of ${pokemon.name}`}
+        />
+        {backImage && (
+          <img
+            src={pokemon.sprites.back_default}
+            alt={`back of ${pokemon.name}`}
+          />
+        )}
+      </div>
+
       <StyledP>{pokemon.name}</StyledP>
-      <img src={pokemon.sprites.front_default} alt={pokemon.name} />
       <StyledP>ID: {pokemon.id}</StyledP>
       <StyledP>Type: {type}</StyledP>
     </Wrapper>
@@ -32,6 +46,7 @@ const PokemonCardDetails = ({ pokemon }) => {
 
 PokemonCardDetails.propTypes = {
   pokemon: PropTypes.object.isRequired,
+  backImage: PropTypes.bool,
 };
 
 export default PokemonCardDetails;

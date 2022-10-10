@@ -7,6 +7,8 @@ import { getPokemon } from "../../redux/actions/pokemonActions";
 import styled from "styled-components";
 import PokemonCardDetails from "./PokemonCardDetails";
 
+import { Link } from "react-router-dom";
+
 const Wrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
@@ -31,7 +33,9 @@ const PokemonCards = ({ pokemonArray }) => {
     <Wrapper>
       {pokemonList.length > 0 ? (
         pokemonList.map((pokemon) => (
-          <PokemonCardDetails key={pokemon.name} pokemon={pokemon} />
+          <Link key={pokemon.name} to={`/pokemon/${pokemon.id}`}>
+            <PokemonCardDetails key={pokemon.name} pokemon={pokemon} />
+          </Link>
         ))
       ) : (
         <p> Loading … </p>
