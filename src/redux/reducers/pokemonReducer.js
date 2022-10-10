@@ -2,7 +2,7 @@ import * as types from "../actions/actionTypes";
 
 export const initialState = {
   pokemonList: [],
-  pokemonObj: undefined,
+  pokemonPage: undefined,
 };
 
 export default function pokemonReducer(state = initialState, action) {
@@ -14,7 +14,7 @@ export default function pokemonReducer(state = initialState, action) {
     case types.SET_POKEMON_FAILURE:
       return { ...state, error: error };
     case types.SET_POKEMON_LIST_SUCCESS:
-      return { ...state, pokemonObj: pokemonArr };
+      return { ...state, pokemonPage: pokemonArr };
     case types.SET_POKEMON_LIST_FAILURE:
       return { ...state, error: error };
     default:

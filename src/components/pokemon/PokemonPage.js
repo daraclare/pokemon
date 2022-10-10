@@ -13,7 +13,7 @@ const Wrapper = styled.section`
 const PokemonPage = () => {
   const dispatch = useDispatch();
   const props = useSelector((state) => state.pokemon);
-  const { pokemonObj, error } = props;
+  const { pokemonPage, error } = props;
 
   useEffect(() => {
     dispatch(getPokemonList());
@@ -23,10 +23,10 @@ const PokemonPage = () => {
 
   return (
     <Wrapper>
-      {pokemonObj ? (
+      {pokemonPage ? (
         <>
-          <p>Number of pokemon: {pokemonObj.count} </p>
-          <PokemonCards idsArr={pokemonObj.results} />
+          <p>Number of pokemon: {pokemonPage.count} </p>
+          <PokemonCards idsArr={pokemonPage.results} />
         </>
       ) : (
         <p>Loading … </p>
@@ -36,7 +36,7 @@ const PokemonPage = () => {
 };
 
 PokemonPage.propTypes = {
-  pokemonObj: PropTypes.object,
+  pokemonPage: PropTypes.object,
   error: PropTypes.string,
 };
 
