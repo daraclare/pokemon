@@ -15,13 +15,13 @@ const Wrapper = styled.div`
   border: 1px solid grey;
 `;
 
-const PokemonCards = ({ idsArr }) => {
+const PokemonCards = ({ pokemonArray }) => {
   const dispatch = useDispatch();
   const props = useSelector((state) => state.pokemon);
   const { pokemonList = [], error } = props;
 
   useEffect(() => {
-    idsArr.forEach((id) => {
+    pokemonArray.forEach((id) => {
       dispatch(getPokemon(id.name));
     });
   }, [dispatch]);
@@ -42,7 +42,7 @@ const PokemonCards = ({ idsArr }) => {
 };
 
 PokemonCards.propTypes = {
-  idsArr: PropTypes.array.isRequired,
+  pokemonArray: PropTypes.array.isRequired,
   pokemonList: PropTypes.array,
   error: PropTypes.string,
 };

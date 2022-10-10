@@ -26,7 +26,7 @@ const PokemonPage = () => {
       {pokemonPage ? (
         <>
           <p>Number of pokemon: {pokemonPage.count} </p>
-          <PokemonCards idsArr={pokemonPage.results} />
+          <PokemonCards pokemonArray={pokemonPage.results} />
         </>
       ) : (
         <p>Loading … </p>
