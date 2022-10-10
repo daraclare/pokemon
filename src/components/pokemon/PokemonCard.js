@@ -4,6 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { getPokemon } from "../../redux/actions/pokemonActions";
 
+import styled from "styled-components";
+
+const Wrapper = styled.article`
+  padding: 8px;
+  border: 1px solid purple;
+`;
+
 const PokemonPage = ({ id }) => {
   const dispatch = useDispatch();
   const pokemons = useSelector((state) => state.pokemon);
@@ -15,7 +22,7 @@ const PokemonPage = ({ id }) => {
   }, [dispatch]);
 
   return (
-    <div>
+    <Wrapper>
       {error ? (
         <p>Error Message: {error}</p>
       ) : pokemon ? (
@@ -25,7 +32,7 @@ const PokemonPage = ({ id }) => {
       ) : (
         <p>Loading Pokemon …</p>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
