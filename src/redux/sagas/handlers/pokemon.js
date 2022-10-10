@@ -17,9 +17,9 @@ export function* handleGetPokemon({ id }) {
   }
 }
 
-export function* handleGetPokemonList({ id }) {
+export function* handleGetPokemonList({ url }) {
   try {
-    const response = yield call(requestGetPokemonList, id);
+    const response = yield call(requestGetPokemonList, url);
     const { data } = response;
     yield put(setPokemonListSuccess(data));
   } catch (error) {

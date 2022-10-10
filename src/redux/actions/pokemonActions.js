@@ -27,10 +27,10 @@ export const setPokemonFailure = (error) => {
     error,
   };
 };
-export const getPokemonList = (id) => {
+export const getPokemonList = (url) => {
   return {
     type: GET_POKEMON_LIST,
-    id,
+    url,
   };
 };
 

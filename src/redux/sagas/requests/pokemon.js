@@ -7,9 +7,9 @@ export const requestGetPokemon = (id) => {
   });
 };
 
-export const requestGetPokemonList = () => {
+export const requestGetPokemonList = (url) => {
   return axios.request({
     method: "get",
-    url: `https://pokeapi.co/api/v2/pokemon?offset=20&limit=20`,
+    url,
   });
 };
