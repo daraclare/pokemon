@@ -34,10 +34,10 @@ export const getPokemonList = (id) => {
   };
 };
 
-export const setPokemonListSuccess = (pokemonArr) => {
+export const setPokemonListSuccess = (pokemonPage) => {
   return {
     type: SET_POKEMON_LIST_SUCCESS,
-    pokemonArr,
+    pokemonPage,
   };
 };
 
