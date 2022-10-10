@@ -5,14 +5,13 @@ import PokemonCards from "./PokemonCards";
 import { getPokemonList } from "../../redux/actions/pokemonActions";
 import styled from "styled-components";
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   padding: 8px;
   border: 1px solid grey;
 `;
 
 const PokemonPage = () => {
   const dispatch = useDispatch();
-
   const props = useSelector((state) => state.pokemon);
   const { pokemonPage, error } = props;
 
@@ -20,10 +19,6 @@ const PokemonPage = () => {
     "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
   );
   const [pokemons, setPokemons] = useState(pokemonPage);
-
-  const handlePagination = (event) => {
-    setUrl(pokemons[event.target.id]);
-  };
 
   useEffect(() => {
     dispatch(getPokemonList(url));
@@ -33,13 +28,19 @@ const PokemonPage = () => {
     setPokemons(pokemonPage);
   }, [pokemonPage]);
 
+  const handlePagination = (event) => {
+    setUrl(pokemons[event.target.id]);
+  };
+
   if (error) return <p>Error Message: {error}</p>;
 
   return (
     <Wrapper>
       {pokemons ? (
         <>
-          <p>Number of pokemon: {pokemons.count} </p>
+          <p>
+            <b>Pokemon Total:</b> {pokemons.count}{" "}
+          </p>
           <PokemonCards pokemonArray={pokemons.results} />
 
           <button

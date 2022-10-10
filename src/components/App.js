@@ -9,7 +9,7 @@ import PokemonPage from "./pokemon/PokemonPage";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
@@ -18,7 +18,7 @@ const App = () => {
         <Route exact path="/pokemon" component={PokemonPage} />
         <Route component={PageNotFound} />
       </Switch>
-    </div>
+    </>
   );
 };
 
