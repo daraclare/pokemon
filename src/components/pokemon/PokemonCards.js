@@ -21,10 +21,10 @@ const PokemonCards = ({ pokemonArray }) => {
   const { pokemonList = [], error } = props;
 
   useEffect(() => {
-    pokemonArray.forEach((id) => {
-      dispatch(getPokemon(id.name));
+    pokemonArray.forEach((pokemon) => {
+      dispatch(getPokemon(pokemon.name));
     });
-  }, [dispatch]);
+  }, [dispatch, pokemonArray]);
 
   if (error) return <p>Error Message: {error}</p>;
 

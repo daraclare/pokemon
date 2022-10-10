@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import PokemonCards from "./PokemonCards";
@@ -12,21 +12,50 @@ const Wrapper = styled.section`
 
 const PokemonPage = () => {
   const dispatch = useDispatch();
+
   const props = useSelector((state) => state.pokemon);
   const { pokemonPage, error } = props;
 
+  const [url, setUrl] = useState(
+    "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
+  );
+  const [pokemons, setPokemons] = useState(pokemonPage);
+
+  const handlePagination = (event) => {
+    setUrl(pokemons[event.target.id]);
+  };
+
   useEffect(() => {
-    dispatch(getPokemonList());
-  }, [dispatch]);
+    dispatch(getPokemonList(url));
+  }, [dispatch, url]);
+
+  useEffect(() => {
+    setPokemons(pokemonPage);
+  }, [pokemonPage]);
 
   if (error) return <p>Error Message: {error}</p>;
 
   return (
     <Wrapper>
-      {pokemonPage ? (
+      {pokemons ? (
         <>
-          <p>Number of pokemon: {pokemonPage.count} </p>
-          <PokemonCards pokemonArray={pokemonPage.results} />
+          <p>Number of pokemon: {pokemons.count} </p>
+          <PokemonCards pokemonArray={pokemons.results} />
+
+          <button
+            id="previous"
+            onClick={handlePagination}
+            disabled={!pokemons.previous}
+          >
+            Previous
+          </button>
+          <button
+            onClick={handlePagination}
+            id="next"
+            disabled={!pokemons.next}
+          >
+            Next
+          </button>
         </>
       ) : (
         <p>Loading … </p>
