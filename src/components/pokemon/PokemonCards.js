@@ -7,11 +7,12 @@ import { getPokemon } from "../../redux/actions/pokemonActions";
 import styled from "styled-components";
 import PokemonCardDetails from "./PokemonCardDetails";
 
-const Wrapper = styled.article`
+const Wrapper = styled.div`
   display: flex;
-  border: 5px blue solid;
-  padding: 8px;
   flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  border: 1px solid grey;
 `;
 
 const PokemonCards = ({ idsArr }) => {

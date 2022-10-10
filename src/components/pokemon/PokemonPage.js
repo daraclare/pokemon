@@ -3,9 +3,9 @@ import PokemonCards from "./PokemonCards";
 
 import styled from "styled-components";
 
-const CardWrapper = styled.article`
+const CardWrapper = styled.section`
   padding: 8px;
-  border: 1px solid red;
+  border: 1px solid grey;
 `;
 
 const PokemonPage = () => {
