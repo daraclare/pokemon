@@ -5,7 +5,6 @@ import {
 } from "./actionTypes";
 
 export const getPokemon = (id) => {
-  console.log("getPokemon id", id);
   return {
     type: GET_POKEMON,
     id,

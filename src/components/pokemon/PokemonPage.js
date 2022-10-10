@@ -1,18 +1,17 @@
 import React from "react";
-import PokemonCard from "./PokemonCard";
+import PokemonCards from "./PokemonCards";
 
 import styled from "styled-components";
 
 const CardWrapper = styled.article`
   padding: 8px;
   border: 1px solid red;
-  display: flex;
 `;
 
 const PokemonPage = () => {
   return (
     <CardWrapper>
-      <PokemonCard id={35} />
+      <PokemonCards idsArr={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
     </CardWrapper>
   );
 };

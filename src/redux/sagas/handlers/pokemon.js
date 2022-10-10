@@ -6,7 +6,6 @@ import {
 import { requestGetPokemon } from "../requests/pokemon";
 
 export function* handleGetPokemon({ id }) {
-  console.log("handlegetpokemon", id);
   try {
     const response = yield call(requestGetPokemon, id);
     const { data } = response;
