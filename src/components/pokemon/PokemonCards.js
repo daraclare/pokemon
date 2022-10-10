@@ -22,7 +22,7 @@ const PokemonCards = ({ idsArr }) => {
 
   useEffect(() => {
     idsArr.forEach((id) => {
-      dispatch(getPokemon(id));
+      dispatch(getPokemon(id.name));
     });
   }, [dispatch]);
 
@@ -30,7 +30,7 @@ const PokemonCards = ({ idsArr }) => {
 
   return (
     <Wrapper>
-      {[pokemonList].length > 0 ? (
+      {pokemonList.length > 0 ? (
         pokemonList.map((pokemon) => (
           <PokemonCardDetails key={pokemon.name} pokemon={pokemon} />
         ))
