@@ -13,12 +13,8 @@ const Header = () => {
         About
       </NavLink>
       {" | "}
-      <NavLink to="/users" activeStyle={activeStyle} exact>
-        Users
-      </NavLink>
-      {" | "}
       <NavLink to="/pokemon" activeStyle={activeStyle} exact>
-        Pokemon
+        Pokedex
       </NavLink>
     </nav>
   );

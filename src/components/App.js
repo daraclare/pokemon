@@ -9,7 +9,7 @@ import PokemonPage from "./pokemon/PokemonPage";
 
 const App = () => {
   return (
-    <div className="container-fluid">
+    <div>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
