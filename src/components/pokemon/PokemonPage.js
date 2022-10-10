@@ -5,10 +5,7 @@ import PokemonCards from "./PokemonCards";
 import { getPokemonList } from "../../redux/actions/pokemonActions";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-  padding: 8px;
-  border: 1px solid grey;
-`;
+const Wrapper = styled.div``;
 
 const PokemonPage = () => {
   const dispatch = useDispatch();

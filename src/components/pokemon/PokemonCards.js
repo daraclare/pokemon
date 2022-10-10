@@ -33,7 +33,11 @@ const PokemonCards = ({ pokemonArray }) => {
     <Wrapper>
       {pokemonList.length > 0 ? (
         pokemonList.map((pokemon) => (
-          <Link key={pokemon.name} to={`/pokemon/${pokemon.id}`}>
+          <Link
+            style={{ textDecoration: "none" }}
+            key={pokemon.name}
+            to={`/pokemon/${pokemon.id}`}
+          >
             <PokemonCardDetails key={pokemon.name} pokemon={pokemon} />
           </Link>
         ))

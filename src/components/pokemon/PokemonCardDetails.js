@@ -17,6 +17,8 @@ const StyledP = styled.p`
   text-transform: uppercase;
   text-align: center;
   margin: 4px;
+  color: darkslategray;
+  text-decoration: none;
 `;
 
 const PokemonCardDetails = ({ pokemon, backImage }) => {
