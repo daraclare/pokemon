@@ -2,6 +2,9 @@ import {
   GET_POKEMON,
   SET_POKEMON_SUCCESS,
   SET_POKEMON_FAILURE,
+  GET_SINGLE_POKEMON,
+  SET_SINGLE_POKEMON_SUCCESS,
+  SET_SINGLE_POKEMON_FAILURE,
   GET_POKEMON_LIST,
   SET_POKEMON_LIST_SUCCESS,
   SET_POKEMON_LIST_FAILURE,
@@ -27,6 +30,28 @@ export const setPokemonFailure = (error) => {
     error,
   };
 };
+
+export const getSinglePokemon = (id) => {
+  return {
+    type: GET_SINGLE_POKEMON,
+    id,
+  };
+};
+
+export const setSinglePokemonSuccess = (pokemon) => {
+  return {
+    type: SET_SINGLE_POKEMON_SUCCESS,
+    pokemon,
+  };
+};
+
+export const setSinglePokemonFailure = (error) => {
+  return {
+    type: SET_SINGLE_POKEMON_FAILURE,
+    error,
+  };
+};
+
 export const getPokemonList = (url) => {
   return {
     type: GET_POKEMON_LIST,

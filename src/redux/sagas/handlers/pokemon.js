@@ -2,6 +2,8 @@ import { call, put } from "redux-saga/effects";
 import {
   setPokemonFailure,
   setPokemonSuccess,
+  setSinglePokemonFailure,
+  setSinglePokemonSuccess,
   setPokemonListFailure,
   setPokemonListSuccess,
 } from "../../actions/pokemonActions";
@@ -14,6 +16,16 @@ export function* handleGetPokemon({ id }) {
     yield put(setPokemonSuccess(data));
   } catch (error) {
     yield put(setPokemonFailure(error.message));
+  }
+}
+
+export function* handleGetSinglePokemon({ id }) {
+  try {
+    const response = yield call(requestGetPokemon, id);
+    const { data } = response;
+    yield put(setSinglePokemonSuccess(data));
+  } catch (error) {
+    yield put(setSinglePokemonFailure(error.message));
   }
 }
 
