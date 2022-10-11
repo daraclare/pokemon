@@ -1,7 +1,5 @@
 import { call, put } from "redux-saga/effects";
 import {
-  setPokemonFailure,
-  setPokemonSuccess,
   setSinglePokemonFailure,
   setSinglePokemonSuccess,
   setPokemonListFailure,
@@ -11,16 +9,6 @@ import {
   requestGetPokemonById,
   requestGetPokemonList,
 } from "../requests/pokemon";
-
-export function* handleGetPokemon({ id }) {
-  try {
-    const response = yield call(requestGetPokemonById, id);
-    const { data } = response;
-    yield put(setPokemonSuccess(data));
-  } catch (error) {
-    yield put(setPokemonFailure(error.message));
-  }
-}
 
 export function* handleGetSinglePokemon({ id }) {
   try {
