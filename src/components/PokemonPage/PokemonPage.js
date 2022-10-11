@@ -3,16 +3,7 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import PokemonCards from "../PokemonCards/PokemonCards";
 import { getPokemonList } from "../../redux/actions/pokemonActions";
-import styled from "styled-components";
-import Button from "..///Buttons/Button";
-
-const ButtonWrapper = styled.div`
-  margin-top: 16px;
-  gap: 16px;
-  display: flex;
-  display: flex;
-  justify-content: space-evenly;
-`;
+import Button, { ButtonWrapper } from "../Buttons/Button";
 
 const PokemonPage = () => {
   const dispatch = useDispatch();

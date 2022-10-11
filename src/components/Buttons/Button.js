@@ -2,11 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+export const ButtonWrapper = styled.div`
+  margin-top: 16px;
+  margin-bottom: 16px;
+  gap: 16px;
+  display: flex;
+  justify-content: space-evenly;
+`;
+
 const StyledButtons = styled.button`
-  min-width: 50%;
+  text-transform: uppercase;
+  background-color: #30a7d7;
+  cursor: grab;
+  color: #fff;
   padding: 8px;
+  border-radius: 5px;
+  border: none;
+  min-width: 50%;
   :only-of-type {
-    width: 100%;
+    width: 80%;
   }
 `;
 
