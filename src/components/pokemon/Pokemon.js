@@ -21,12 +21,19 @@ const Pokemon = () => {
     dispatch(getSinglePokemon(id));
   }, [dispatch, id]);
 
-  if (error) return <p>Error Message: {error}</p>;
+  if (error)
+    return id > 0 && id < 906 ? (
+      <p>Error Message: {error}</p>
+    ) : (
+      <p>Please enter a number between 1 and 905</p>
+    );
 
   return (
     <Wrapper>
-      {singlePokemon && (
-        <PokemonCardDetails pokemon={singlePokemon} backImage={true} />
+      {singlePokemon ? (
+        <PokemonCardDetails pokemon={singlePokemon} />
+      ) : (
+        <p>Loading …</p>
       )}
     </Wrapper>
   );

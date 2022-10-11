@@ -5,12 +5,21 @@ import styled from "styled-components";
 import { POKEMON_COLOURS } from "../../consts";
 
 const Wrapper = styled.article`
-  min-width: 162px;
   padding: 16px;
   display: flex;
   flex-direction: column;
-  background-color: ${(props) =>
-    POKEMON_COLOURS[props.type] + "60"}; // add opacity to the background colour
+  width: 162px;
+  border-radius: 8px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ type }) =>
+    POKEMON_COLOURS[type] + "75"}; // add opacity to the background colour
+`;
+
+const StyledImg = styled.img`
+  height: 60%;
+  width: 60%;
 `;
 
 const StyledP = styled.p`
@@ -18,27 +27,14 @@ const StyledP = styled.p`
   text-align: center;
   margin: 4px;
   color: darkslategray;
-  text-decoration: none;
 `;
 
-const PokemonCardDetails = ({ pokemon, backImage }) => {
+const PokemonCardDetails = ({ pokemon }) => {
   const type = pokemon.types[0].type.name || "normal";
-
+  const images = pokemon.sprites.other["official-artwork"];
   return (
     <Wrapper type={type}>
-      <div>
-        <img
-          src={pokemon.sprites.front_default}
-          alt={`front of ${pokemon.name}`}
-        />
-        {backImage && (
-          <img
-            src={pokemon.sprites.back_default}
-            alt={`back of ${pokemon.name}`}
-          />
-        )}
-      </div>
-
+      <StyledImg src={images.front_default} alt={`front of ${pokemon.name}`} />
       <StyledP>{pokemon.name}</StyledP>
       <StyledP>ID: {pokemon.id}</StyledP>
       <StyledP>Type: {type}</StyledP>
@@ -48,7 +44,6 @@ const PokemonCardDetails = ({ pokemon, backImage }) => {
 
 PokemonCardDetails.propTypes = {
   pokemon: PropTypes.object.isRequired,
-  backImage: PropTypes.bool,
 };
 
 export default PokemonCardDetails;
