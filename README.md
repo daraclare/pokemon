@@ -4,6 +4,7 @@ Improvements to be made:
 
 - Get pokemon in consistent order
 - Add param to url for randomiser so back button will work
+- Add query to pagination so back button works on pokedex
 - Improve naming
 - Improve prop types
 - Add tests
