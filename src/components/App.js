@@ -12,12 +12,22 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: Arial, san-serif;
   }
+  a {
+   color: slategrey;
+  }
+  a:active {
+   color: red;
+  }
+  a:link {
+    text-decoration: none;
+  }
   #app {
     max-width: 850px;
     margin: 0 auto;
   }
   nav {
-    padding: 20px 0 20px 0;
+    padding: 20px;
+    text-align: center;
   }
 `;
 

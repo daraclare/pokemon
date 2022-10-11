@@ -2,17 +2,18 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const activeStyle = { color: "black" };
   return (
     <nav>
-      <NavLink to="/" exact>
+      <NavLink to="/" activeStyle={activeStyle} exact>
         Home
       </NavLink>
       {" | "}
-      <NavLink to="/pokemon" exact>
+      <NavLink to="/pokemon" activeStyle={activeStyle} exact>
         Pokedex
       </NavLink>
       {" | "}
-      <NavLink to="/random" exact>
+      <NavLink to="/random" activeStyle={activeStyle} exact>
         Random Pokemon
       </NavLink>
     </nav>
