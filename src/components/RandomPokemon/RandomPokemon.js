@@ -16,10 +16,12 @@ const RandomPokemon = () => {
     setLoading(true);
     dispatch(getSinglePokemon(id));
     setLoading(false);
-  }, [dispatch, id]);
+  }, [id]);
 
   const handleClick = () => {
+    setLoading(true);
     setId(Math.floor(Math.random() * 905) + 1);
+    setLoading(false);
   };
 
   if (error) return <p>Error Message: {error}</p>;
@@ -36,7 +38,6 @@ const RandomPokemon = () => {
           buttonText={"Get Random Pokemon"}
         />
       </ButtonWrapper>
-
       {singlePokemon && (
         <PokemonCardDetails singleCard={true} pokemon={singlePokemon} />
       )}
