@@ -12,6 +12,10 @@ const Header = () => {
       <NavLink to="/pokemon" activeStyle={activeStyle} exact>
         Pokedex
       </NavLink>
+      {" | "}
+      <NavLink to="/random" activeStyle={activeStyle} exact>
+        Random Pokemon
+      </NavLink>
     </nav>
   );
 };

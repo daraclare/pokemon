@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import PokemonCardDetails from "./PokemonCardDetails";
+import PokemonCardDetails from "../PokemonCards/PokemonCardDetails";
 import { getSinglePokemon } from "../../redux/actions/pokemonActions";
 
-const Pokemon = () => {
+const RandomPokemon = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const { id } = useParams();
+  const [id, setId] = useState(Math.floor(Math.random() * 905) + 1);
   const props = useSelector((state) => state.pokemon);
   const { singlePokemon, error } = props;
 
@@ -19,17 +17,17 @@ const Pokemon = () => {
     setLoading(false);
   }, [dispatch, id]);
 
-  if (error)
-    return id > 0 && id < 906 ? (
-      <p>Error Message: {error}</p>
-    ) : (
-      <p>Please enter a number between 1 and 905</p>
-    );
+  const handleClick = () => {
+    setId(Math.floor(Math.random() * 905) + 1);
+  };
+
+  if (error) return <p>Error Message: {error}</p>;
 
   if (loading) return <p>Loading …</p>;
 
   return (
     <>
+      <button onClick={handleClick}>Get Random Pokemon</button>
       {singlePokemon && (
         <PokemonCardDetails singleCard={true} pokemon={singlePokemon} />
       )}
@@ -37,9 +35,9 @@ const Pokemon = () => {
   );
 };
 
-Pokemon.propTypes = {
+RandomPokemon.propTypes = {
   singlePokemon: PropTypes.object,
   error: PropTypes.string,
 };
 
-export default Pokemon;
+export default RandomPokemon;

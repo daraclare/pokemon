@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import PokemonCards from "./PokemonCards";
+import PokemonCards from "../PokemonCards/PokemonCards";
 import { getPokemonList } from "../../redux/actions/pokemonActions";
 import styled from "styled-components";
 
-const Wrapper = styled.div``;
+const ButtonWrapper = styled.div`
+  margin-top: 16px;
+  gap: 16px;
+  display: flex;
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+const Buttons = styled.button`
+  width: 50%;
+  padding: 8px;
+`;
 
 const PokemonPage = () => {
   const dispatch = useDispatch();
@@ -37,31 +48,32 @@ const PokemonPage = () => {
   if (loading) return <p>Loading …</p>;
 
   return (
-    <Wrapper>
+    <div>
       {pokemons && (
         <>
           <p>
             <b>Pokemon Total:</b> {pokemons.count}{" "}
           </p>
           <PokemonCards pokemonArray={pokemons.results} />
-
-          <button
-            id="previous"
-            onClick={handlePagination}
-            disabled={!pokemons.previous}
-          >
-            Previous
-          </button>
-          <button
-            onClick={handlePagination}
-            id="next"
-            disabled={!pokemons.next}
-          >
-            Next
-          </button>
+          <ButtonWrapper>
+            <Buttons
+              id="previous"
+              onClick={handlePagination}
+              disabled={!pokemons.previous}
+            >
+              Previous
+            </Buttons>
+            <Buttons
+              onClick={handlePagination}
+              id="next"
+              disabled={!pokemons.next}
+            >
+              Next
+            </Buttons>
+          </ButtonWrapper>
         </>
       )}
-    </Wrapper>
+    </div>
   );
 };
 

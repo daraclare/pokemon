@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import PropTypes from "prop-types";
 import { getPokemon } from "../../redux/actions/pokemonActions";
-
 import styled from "styled-components";
 import PokemonCardDetails from "./PokemonCardDetails";
 

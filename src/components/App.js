@@ -3,10 +3,10 @@ import { Route, Switch } from "react-router-dom";
 import HomePage from "./home/HomePage";
 import Header from "./common/Header";
 import PageNotFound from "./PageNotFound";
-import PokemonPage from "./pokemon/PokemonPage";
-import Pokemon from "./pokemon/Pokemon";
-
+import PokemonPage from "./PokemonPage/PokemonPage";
+import SinglePokemon from "./SinglePokemon/SinglePokemon";
 import { createGlobalStyle } from "styled-components";
+import RandomPokemon from "./RandomPokemon/RandomPokemon";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -29,7 +29,8 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/pokemon" component={PokemonPage} />
-        <Route exact path="/pokemon/:id" component={Pokemon} />
+        <Route exact path="/pokemon/:id" component={SinglePokemon} />
+        <Route exact path="/random" component={RandomPokemon} />
         <Route component={PageNotFound} />
       </Switch>
     </>
