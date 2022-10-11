@@ -27,7 +27,7 @@ const StyledImg = styled.img`
 `;
 
 const StyledP = styled.p`
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-align: center;
   margin: 4px;
   color: darkslategray;
@@ -41,10 +41,10 @@ const PokemonCardDetails = ({ pokemon, singleCard }) => {
       <StyledImg
         singleCard={singleCard}
         src={images.front_default}
-        alt={`front of ${pokemon.name}`}
+        alt={`Front of ${pokemon.name}`}
       />
       <StyledP>{pokemon.name}</StyledP>
-      <StyledP>ID: {pokemon.id}</StyledP>
+      <StyledP>#{pokemon.id}</StyledP>
       <StyledP>Type: {type}</StyledP>
     </Wrapper>
   );
