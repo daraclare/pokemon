@@ -13,7 +13,7 @@ export const ButtonWrapper = styled.div`
 const StyledButtons = styled.button`
   text-transform: uppercase;
   background-color: #30a7d7;
-  cursor: grab;
+  cursor: pointer;
   color: #fff;
   padding: 8px;
   border-radius: 5px;
@@ -21,6 +21,10 @@ const StyledButtons = styled.button`
   min-width: 50%;
   :only-of-type {
     width: 80%;
+  }
+  :disabled {
+    background-color: #30a7d730;
+    cursor: unset;
   }
 `;
 

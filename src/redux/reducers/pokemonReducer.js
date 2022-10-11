@@ -18,7 +18,6 @@ export default function pokemonReducer(state = initialState, action) {
       return { ...state, pokemonList: [], pokemonPage };
     case types.SET_POKEMON_LIST_FAILURE:
       return { ...state, error: error };
-
     case types.SET_SINGLE_POKEMON_SUCCESS:
       return { ...state, pokemonList: [], singlePokemon: pokemon };
     case types.SET_SINGLE_POKEMON_FAILURE:
