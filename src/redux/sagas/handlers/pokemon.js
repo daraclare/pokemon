@@ -7,11 +7,14 @@ import {
   setPokemonListFailure,
   setPokemonListSuccess,
 } from "../../actions/pokemonActions";
-import { requestGetPokemon, requestGetPokemonList } from "../requests/pokemon";
+import {
+  requestGetPokemonById,
+  requestGetPokemonList,
+} from "../requests/pokemon";
 
 export function* handleGetPokemon({ id }) {
   try {
-    const response = yield call(requestGetPokemon, id);
+    const response = yield call(requestGetPokemonById, id);
     const { data } = response;
     yield put(setPokemonSuccess(data));
   } catch (error) {
@@ -21,7 +24,7 @@ export function* handleGetPokemon({ id }) {
 
 export function* handleGetSinglePokemon({ id }) {
   try {
-    const response = yield call(requestGetPokemon, id);
+    const response = yield call(requestGetPokemonById, id);
     const { data } = response;
     yield put(setSinglePokemonSuccess(data));
   } catch (error) {
@@ -32,8 +35,7 @@ export function* handleGetSinglePokemon({ id }) {
 export function* handleGetPokemonList({ url }) {
   try {
     const response = yield call(requestGetPokemonList, url);
-    const { data } = response;
-    yield put(setPokemonListSuccess(data));
+    yield put(setPokemonListSuccess(response));
   } catch (error) {
     yield put(setPokemonListFailure(error.message));
   }
