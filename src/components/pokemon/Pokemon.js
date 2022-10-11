@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import PropTypes from "prop-types";
@@ -8,12 +8,15 @@ import { getSinglePokemon } from "../../redux/actions/pokemonActions";
 
 const Pokemon = () => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const props = useSelector((state) => state.pokemon);
   const { singlePokemon, error } = props;
 
   useEffect(() => {
+    setLoading(true);
     dispatch(getSinglePokemon(id));
+    setLoading(false);
   }, [dispatch, id]);
 
   if (error)
@@ -23,12 +26,12 @@ const Pokemon = () => {
       <p>Please enter a number between 1 and 905</p>
     );
 
+  if (loading) return <p>Loading …</p>;
+
   return (
     <>
-      {singlePokemon ? (
+      {singlePokemon && (
         <PokemonCardDetails singleCard={true} pokemon={singlePokemon} />
-      ) : (
-        <p>Loading …</p>
       )}
     </>
   );

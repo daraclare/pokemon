@@ -11,18 +11,22 @@ const PokemonPage = () => {
   const dispatch = useDispatch();
   const props = useSelector((state) => state.pokemon);
   const { pokemonPage, error } = props;
-
+  const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState(
     "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
   );
   const [pokemons, setPokemons] = useState(pokemonPage);
 
   useEffect(() => {
+    setLoading(true);
     dispatch(getPokemonList(url));
+    setLoading(false);
   }, [dispatch, url]);
 
   useEffect(() => {
+    setLoading(true);
     setPokemons(pokemonPage);
+    setLoading(false);
   }, [pokemonPage]);
 
   const handlePagination = (event) => {
@@ -30,10 +34,11 @@ const PokemonPage = () => {
   };
 
   if (error) return <p>Error Message: {error}</p>;
+  if (loading) return <p>Loading …</p>;
 
   return (
     <Wrapper>
-      {pokemons ? (
+      {pokemons && (
         <>
           <p>
             <b>Pokemon Total:</b> {pokemons.count}{" "}
@@ -55,8 +60,6 @@ const PokemonPage = () => {
             Next
           </button>
         </>
-      ) : (
-        <p>Loading … </p>
       )}
     </Wrapper>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import PropTypes from "prop-types";
@@ -19,19 +19,24 @@ const Wrapper = styled.section`
 const PokemonCards = ({ pokemonArray }) => {
   const dispatch = useDispatch();
   const props = useSelector((state) => state.pokemon);
+  const [loading, setLoading] = useState(true);
   const { pokemonList = [], error } = props;
 
   useEffect(() => {
+    setLoading(true);
     pokemonArray.forEach((pokemon) => {
       dispatch(getPokemon(pokemon.name));
     });
+    setLoading(false);
   }, [dispatch, pokemonArray]);
 
   if (error) return <p>Error Message: {error}</p>;
 
+  if (loading) return <p>Loading …</p>;
+
   return (
     <Wrapper>
-      {pokemonList.length > 0 ? (
+      {pokemonList.length > 0 &&
         pokemonList.map((pokemon) => (
           <Link
             style={{ textDecoration: "none" }}
@@ -44,10 +49,7 @@ const PokemonCards = ({ pokemonArray }) => {
               pokemon={pokemon}
             />
           </Link>
-        ))
-      ) : (
-        <p> Loading … </p>
-      )}
+        ))}
     </Wrapper>
   );
 };

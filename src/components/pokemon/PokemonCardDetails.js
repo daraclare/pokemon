@@ -17,7 +17,8 @@ const Wrapper = styled.article`
     POKEMON_COLOURS[type] + "75"}; // add opacity to the background colour
   min-height: 210px;
   :hover {
-    background-color: ${({ type }) =>
+    background-color: ${({ type, singleCard }) =>
+      !singleCard &&
       POKEMON_COLOURS[type] + "95"}; // add opacity to the background colour
   }
 `;
