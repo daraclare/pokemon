@@ -9,10 +9,6 @@ const Header = () => {
         Home
       </NavLink>
       {" | "}
-      <NavLink to="/about" activeStyle={activeStyle} exact>
-        About
-      </NavLink>
-      {" | "}
       <NavLink to="/pokemon" activeStyle={activeStyle} exact>
         Pokedex
       </NavLink>
