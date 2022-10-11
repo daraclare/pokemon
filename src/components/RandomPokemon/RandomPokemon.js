@@ -7,16 +7,21 @@ import Button, { ButtonWrapper } from "../Buttons/Button";
 
 const RandomPokemon = () => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
-  const [id, setId] = useState(Math.floor(Math.random() * 905) + 1);
   const props = useSelector((state) => state.pokemon);
   const { singlePokemon, error } = props;
+  const [loading, setLoading] = useState(true);
+  const [id, setId] = useState(Math.floor(Math.random() * 905) + 1);
 
   useEffect(() => {
     setLoading(true);
     dispatch(getSinglePokemon(id));
-    setLoading(false);
   }, [id]);
+
+  useEffect(() => {
+    if (singlePokemon && singlePokemon.id == id) {
+      setLoading(false);
+    }
+  }, [props.singlePokemon]);
 
   const handleClick = () => {
     setLoading(true);

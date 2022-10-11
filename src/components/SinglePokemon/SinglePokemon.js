@@ -15,8 +15,13 @@ const SinglePokemon = () => {
   useEffect(() => {
     setLoading(true);
     dispatch(getSinglePokemon(id));
-    setLoading(false);
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (singlePokemon && singlePokemon.id == id) {
+      setLoading(false);
+    }
+  }, [props.singlePokemon]);
 
   if (error)
     return id > 0 && id < 906 ? (

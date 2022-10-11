@@ -38,9 +38,6 @@ const PokemonPage = () => {
     <div>
       {pokemonPage && (
         <>
-          <p>
-            <b>Pokemon Total:</b> {pokemonPage.pageDetails.count}{" "}
-          </p>
           <Wrapper>
             {pokemonPage.pokemons.length > 0 &&
               pokemonPage.pokemons.map((pokemon) => {

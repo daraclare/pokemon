@@ -1,10 +1,9 @@
 A Pokemon app using React, Redux & Sagas
 
-To improve:
+Improvements to be made:
 
-- Request pokemon by ID - i.e. in correct order
-- add tests
-- Improve styling
+- Get pokemon in consistent order
+- Add tests
 - Add caching / reduce requests
-- total pokemon is wrong 1154 not 905
-- add proper loading icon
+- Add proper loading icon
+- Improve styling
