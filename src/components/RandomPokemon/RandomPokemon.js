@@ -3,6 +3,12 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import PokemonCardDetails from "../PokemonCards/PokemonCardDetails";
 import { getSinglePokemon } from "../../redux/actions/pokemonActions";
+import Button from "../Buttons/Button";
+import styled from "styled-components";
+
+const ButtonWrapper = styled.div`
+  margin: 16px;
+`;
 
 const RandomPokemon = () => {
   const dispatch = useDispatch();
@@ -27,7 +33,15 @@ const RandomPokemon = () => {
 
   return (
     <>
-      <button onClick={handleClick}>Get Random Pokemon</button>
+      <ButtonWrapper>
+        <Button
+          id="randomise"
+          handleClick={handleClick}
+          disabled={loading}
+          buttonText={"Get Random Pokemon"}
+        />
+      </ButtonWrapper>
+
       {singlePokemon && (
         <PokemonCardDetails singleCard={true} pokemon={singlePokemon} />
       )}

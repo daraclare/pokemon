@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PokemonCards from "../PokemonCards/PokemonCards";
 import { getPokemonList } from "../../redux/actions/pokemonActions";
 import styled from "styled-components";
+import Button from "..///Buttons/Button";
 
 const ButtonWrapper = styled.div`
   margin-top: 16px;
@@ -11,11 +12,6 @@ const ButtonWrapper = styled.div`
   display: flex;
   display: flex;
   justify-content: space-evenly;
-`;
-
-const Buttons = styled.button`
-  width: 50%;
-  padding: 8px;
 `;
 
 const PokemonPage = () => {
@@ -56,20 +52,18 @@ const PokemonPage = () => {
           </p>
           <PokemonCards pokemonArray={pokemons.results} />
           <ButtonWrapper>
-            <Buttons
+            <Button
               id="previous"
-              onClick={handlePagination}
+              handleClick={handlePagination}
               disabled={!pokemons.previous}
-            >
-              Previous
-            </Buttons>
-            <Buttons
-              onClick={handlePagination}
+              buttonText={"Previous"}
+            />
+            <Button
               id="next"
+              handleClick={handlePagination}
               disabled={!pokemons.next}
-            >
-              Next
-            </Buttons>
+              buttonText={"Next"}
+            />
           </ButtonWrapper>
         </>
       )}
