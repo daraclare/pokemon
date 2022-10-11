@@ -8,9 +8,18 @@ import UsersPage from "./users/UsersPage";
 import PokemonPage from "./pokemon/PokemonPage";
 import Pokemon from "./pokemon/Pokemon";
 
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: Arial, san-serif;
+  }
+`;
+
 const App = () => {
   return (
     <>
+      <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />

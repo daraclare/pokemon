@@ -8,18 +8,22 @@ const Wrapper = styled.article`
   padding: 16px;
   display: flex;
   flex-direction: column;
-  width: 162px;
+  ${({ singleCard }) => !singleCard && "width: 162px;"};
   border-radius: 8px;
   text-align: center;
   align-items: center;
   justify-content: center;
   background-color: ${({ type }) =>
     POKEMON_COLOURS[type] + "75"}; // add opacity to the background colour
+  min-height: 210px;
+  :hover {
+    background-color: ${({ type }) =>
+      POKEMON_COLOURS[type] + "95"}; // add opacity to the background colour
+  }
 `;
 
 const StyledImg = styled.img`
-  height: 60%;
-  width: 60%;
+  ${({ singleCard }) => !singleCard && "height: 60%; width: 60%"};
 `;
 
 const StyledP = styled.p`
@@ -29,12 +33,16 @@ const StyledP = styled.p`
   color: darkslategray;
 `;
 
-const PokemonCardDetails = ({ pokemon }) => {
+const PokemonCardDetails = ({ pokemon, singleCard }) => {
   const type = pokemon.types[0].type.name || "normal";
   const images = pokemon.sprites.other["official-artwork"];
   return (
-    <Wrapper type={type}>
-      <StyledImg src={images.front_default} alt={`front of ${pokemon.name}`} />
+    <Wrapper singleCard={singleCard} type={type}>
+      <StyledImg
+        singleCard={singleCard}
+        src={images.front_default}
+        alt={`front of ${pokemon.name}`}
+      />
       <StyledP>{pokemon.name}</StyledP>
       <StyledP>ID: {pokemon.id}</StyledP>
       <StyledP>Type: {type}</StyledP>
@@ -44,6 +52,7 @@ const PokemonCardDetails = ({ pokemon }) => {
 
 PokemonCardDetails.propTypes = {
   pokemon: PropTypes.object.isRequired,
+  singleCard: PropTypes.bool.isRequired,
 };
 
 export default PokemonCardDetails;

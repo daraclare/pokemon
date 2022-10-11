@@ -5,11 +5,6 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import PokemonCardDetails from "./PokemonCardDetails";
 import { getSinglePokemon } from "../../redux/actions/pokemonActions";
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  padding: 8px;
-`;
 
 const Pokemon = () => {
   const dispatch = useDispatch();
@@ -29,13 +24,13 @@ const Pokemon = () => {
     );
 
   return (
-    <Wrapper>
+    <>
       {singlePokemon ? (
-        <PokemonCardDetails pokemon={singlePokemon} />
+        <PokemonCardDetails singleCard={true} pokemon={singlePokemon} />
       ) : (
         <p>Loading …</p>
       )}
-    </Wrapper>
+    </>
   );
 };
 

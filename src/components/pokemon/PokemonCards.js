@@ -38,7 +38,11 @@ const PokemonCards = ({ pokemonArray }) => {
             key={pokemon.name}
             to={`/pokemon/${pokemon.id}`}
           >
-            <PokemonCardDetails key={pokemon.name} pokemon={pokemon} />
+            <PokemonCardDetails
+              singleCard={false}
+              key={pokemon.name}
+              pokemon={pokemon}
+            />
           </Link>
         ))
       ) : (
