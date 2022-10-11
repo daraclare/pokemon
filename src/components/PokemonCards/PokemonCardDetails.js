@@ -23,7 +23,8 @@ const Wrapper = styled.article`
 `;
 
 const StyledImg = styled.img`
-  ${({ singleCard }) => !singleCard && "height: 60%; width: 60%"};
+  width: 60%;
+  height: 60%;
 `;
 
 const StyledP = styled.p`
