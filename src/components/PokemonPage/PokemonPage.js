@@ -41,16 +41,18 @@ const PokemonPage = () => {
         <>
           <Wrapper>
             {pokemonPage.pokemons.length > 0 &&
-              pokemonPage.pokemons.map(({ data }) => {
-                return (
-                  <ErrorBoundary
-                    key={data.id}
-                    fallback_message="This card is broken, please refresh"
-                  >
-                    <PokemonCards pokemon={data} loading={loading} />
-                  </ErrorBoundary>
-                );
-              })}
+              pokemonPage.pokemons
+                .sort((a, b) => a.data.id - b.data.id)
+                .map(({ data }) => {
+                  return (
+                    <ErrorBoundary
+                      key={data.id}
+                      fallback_message="This card is broken, please refresh"
+                    >
+                      <PokemonCards pokemon={data} loading={loading} />
+                    </ErrorBoundary>
+                  );
+                })}
           </Wrapper>
 
           <ButtonWrapper>
