@@ -8,16 +8,8 @@ const PokemonCards = ({ pokemon, loading }) => {
   return (
     <>
       {pokemon && (
-        <Link
-          style={{ textDecoration: "none" }}
-          key={pokemon.name}
-          to={`/pokemon/${pokemon.id}`}
-        >
-          <PokemonCardDetails
-            singleCard={false}
-            key={pokemon.name}
-            pokemon={pokemon}
-          />
+        <Link to={`/pokemon/${pokemon.id}`}>
+          <PokemonCardDetails singleCard={false} pokemon={pokemon} />
         </Link>
       )}
     </>

@@ -5,6 +5,7 @@ import PokemonCards from "../PokemonCards/PokemonCards";
 import { getPokemonList } from "../../redux/actions/pokemonActions";
 import Button, { ButtonWrapper } from "../Buttons/Button";
 import styled from "styled-components";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 const Wrapper = styled.section`
   display: flex;
@@ -40,13 +41,14 @@ const PokemonPage = () => {
         <>
           <Wrapper>
             {pokemonPage.pokemons.length > 0 &&
-              pokemonPage.pokemons.map((pokemon) => {
+              pokemonPage.pokemons.map(({ data }) => {
                 return (
-                  <PokemonCards
-                    key={pokemon.data.name}
-                    pokemon={pokemon.data}
-                    loading={loading}
-                  />
+                  <ErrorBoundary
+                    key={data.id}
+                    fallback_message="This card is broken, please refresh"
+                  >
+                    <PokemonCards pokemon={data} loading={loading} />
+                  </ErrorBoundary>
                 );
               })}
           </Wrapper>
