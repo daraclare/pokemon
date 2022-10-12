@@ -44,15 +44,20 @@ const PokemonCardDetails = ({ pokemon, singleCard }) => {
     event.target.src = FALLBACK_IMAGE_URL;
   };
   return (
-    <Wrapper singleCard={singleCard} type={type}>
+    <Wrapper
+      data-testid={`${pokemon.name}-card`}
+      singleCard={singleCard}
+      type={type}
+    >
       <StyledImg
+        data-testid={`${pokemon.name}-image`}
         src={image}
         alt={`Front of ${pokemon.name}`}
         onError={addFallbackImg}
       />
-      <StyledP>{pokemon.name}</StyledP>
-      <StyledP>#{pokemon.id}</StyledP>
-      <StyledP>Type: {type}</StyledP>
+      <StyledP data-testid={`${pokemon.name}-name`}>{pokemon.name}</StyledP>
+      <StyledP data-testid={`${pokemon.name}-id`}>#{pokemon.id}</StyledP>
+      <StyledP data-testid={`${pokemon.name}-type`}>Type: {type}</StyledP>
     </Wrapper>
   );
 };

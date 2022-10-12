@@ -18,7 +18,7 @@ const PokemonCards = ({ pokemon, loading }) => {
 
 PokemonCards.propTypes = {
   pokemon: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
 };
 
 export default PokemonCards;
