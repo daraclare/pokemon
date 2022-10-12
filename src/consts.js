@@ -18,3 +18,5 @@ export const POKEMON_COLOURS = {
   steel: "#B7B7CE",
   fairy: "#D685AD",
 };
+
+export const FALLBACK_IMAGE_URL = "/public/images/pokemon-logo.png";

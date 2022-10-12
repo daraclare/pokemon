@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { POKEMON_COLOURS } from "../../consts";
+import { POKEMON_COLOURS, FALLBACK_IMAGE_URL } from "../../consts";
 
 const Wrapper = styled.article`
   padding: 16px;
@@ -36,13 +36,19 @@ const StyledP = styled.p`
 
 const PokemonCardDetails = ({ pokemon, singleCard }) => {
   const type = pokemon.types[0].type.name || "normal";
-  const images = pokemon.sprites.other["official-artwork"];
+  const image =
+    pokemon.sprites.other["official-artwork"].front_default ||
+    FALLBACK_IMAGE_URL;
+
+  const addFallbackImg = (event) => {
+    event.target.src = FALLBACK_IMAGE_URL;
+  };
   return (
     <Wrapper singleCard={singleCard} type={type}>
       <StyledImg
-        singleCard={singleCard}
-        src={images.front_default}
+        src={image}
         alt={`Front of ${pokemon.name}`}
+        onError={addFallbackImg}
       />
       <StyledP>{pokemon.name}</StyledP>
       <StyledP>#{pokemon.id}</StyledP>
