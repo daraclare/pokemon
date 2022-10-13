@@ -26,12 +26,13 @@ export const requestGetPokemonList = async (url) => {
     return Promise.all(
       arr.map(async (pokemon) => {
         const result = await requestGetPokemonByUrl(pokemon.url, null);
-        pokemons.push(result);
+        pokemons.push(result.data);
       })
     ).then(() => {
+      pokemons.sort((a, b) => a.id - b.id);
       return { pageDetails: response.data, pokemons };
     });
   } catch (error) {
-    throw new Error(`fetching list of pokemons went wrong`);
+    throw new Error(`Error with requestGetPokemonList:`, error);
   }
 };
